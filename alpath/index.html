@@ -34,7 +34,7 @@ html,body{margin:0}
 body{background:var(--ground);color:var(--text);font:400 16px/24px var(--sans);font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
 button,input,select{font:inherit;color:inherit}
 sub,sup{font-size:max(11px,.72em);line-height:0}
-/* type scale, nothing else: 14 labels and figure text / 16 body / 18 lead and axis names / 22 section and figures / 32 title / 40 answer */
+/* type scale, nothing else: 14 labels and figure text / 16 body / 18 lead, axis names and figures / 22 section / 28 answer / 32 title */
 .hat{position:relative;display:inline-block}
 .hat::after{content:"\02C6";position:absolute;left:0;right:0;top:-.28em;text-align:center;font-style:normal;transform:translateX(.12em)}
 .m{font-family:var(--serif);font-style:italic}
@@ -139,13 +139,14 @@ h2{font:600 22px/30px var(--serif);margin:0}
 .fighead{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:4px}
 .fighead h2{font-size:22px;line-height:30px}
 .figsub{margin:2px 0 14px;color:var(--muted);font-size:16px;line-height:22px}
-.kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px 16px;margin:6px 0 20px}
+.kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px 16px;margin:6px 0 18px}
+.kpi .v .muted{font-size:16px}
 .kpi .k{color:var(--muted);font-size:14px;line-height:20px}
-.kpi .v{font-size:22px;line-height:30px;font-variant-numeric:tabular-nums}
+.kpi .v{font-size:18px;line-height:26px;font-variant-numeric:tabular-nums}
 .kpi .k,.figsub,.finding,.db .nm,.caption,.figure text{font-variant-numeric:tabular-nums}
 .kpi .v small{font-size:14px;color:var(--muted)}
 .kpi.lead{grid-column:1 / -1}
-.kpi.lead .v{font-size:40px;line-height:48px;font-weight:500;letter-spacing:-.01em}
+.kpi.lead .v{font-size:28px;line-height:36px;font-weight:600;letter-spacing:-.01em}
 .figure svg{display:block;width:100%;height:auto;overflow:visible}
 .figure text{font-family:var(--sans);font-size:14px;fill:var(--muted);font-variant-numeric:tabular-nums}
 .figure text.lab{fill:var(--text)}
@@ -189,7 +190,7 @@ pre.err{font:13px/18px ui-monospace,Menlo,monospace;white-space:pre-wrap;margin:
   .panel{padding:18px 16px}
   .nh .eff{margin-left:0;width:100%}
   .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .kpi.lead .v{font-size:32px;line-height:40px}
+  .kpi.lead .v{font-size:26px;line-height:34px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style></head>
