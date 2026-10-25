@@ -1,0 +1,2006 @@
+{
+ "AXES": [
+  {
+   "id": "tgt",
+   "n": "Axis 1",
+   "t": "Regression target",
+   "sub": "What the surrogate is fitted on",
+   "eff": "DOMINATES \u2014 1.1\u20132.7% vs 6.7\u201318.7%",
+   "opts": [
+    {
+     "k": "margin",
+     "l": "Margin g(x)",
+     "m": "A1\u2013A10",
+     "s": "code"
+    },
+    {
+     "k": "tg",
+     "l": "Compressed T(g)",
+     "m": "g/(1+|g|) \u00b7 A11, A11*",
+     "s": "code"
+    },
+    {
+     "k": "beta",
+     "l": "Conditional \u03b2(x_s)",
+     "m": "capacity side \u00b7 best",
+     "s": "code"
+    },
+    {
+     "k": "othr",
+     "l": "Other transforms / sign",
+     "m": "\u2014",
+     "s": "lit"
+    }
+   ]
+  },
+  {
+   "id": "surr",
+   "n": "Axis 2",
+   "t": "Surrogate",
+   "sub": "Model class",
+   "eff": "TabICL 6.7\u201318.7% vs GP/XGB 74\u2013141%",
+   "opts": [
+    {
+     "k": "gp",
+     "l": "GP / Kriging",
+     "m": "A1\u2013A3 \u00b7 AK-MCS",
+     "s": "code"
+    },
+    {
+     "k": "xgb",
+     "l": "XGBoost",
+     "m": "A4, A6",
+     "s": "code"
+    },
+    {
+     "k": "tabicl",
+     "l": "TabICL v2",
+     "m": "A5\u2013A12 \u00b7 in-context",
+     "s": "code"
+    },
+    {
+     "k": "pck",
+     "l": "PC-Kriging",
+     "m": "Sch\u00f6bi et al.",
+     "s": "lit"
+    },
+    {
+     "k": "pce",
+     "l": "PCE",
+     "m": "spectral",
+     "s": "lit"
+    },
+    {
+     "k": "svmc",
+     "l": "SVM classifier",
+     "m": "side only, explicit boundary",
+     "s": "lit"
+    },
+    {
+     "k": "svr",
+     "l": "SVR regressor",
+     "m": "continuous margin",
+     "s": "lit"
+    },
+    {
+     "k": "nn",
+     "l": "Deep NN / PINN",
+     "m": "\u2014",
+     "s": "lit"
+    },
+    {
+     "k": "rsm",
+     "l": "Quadratic response surface",
+     "m": "the 1990 original",
+     "s": "lit"
+    },
+    {
+     "k": "none",
+     "l": "None \u2014 direct sampling",
+     "m": "no surrogate at all",
+     "s": "lit"
+    },
+    {
+     "k": "agn",
+     "l": "Surrogate-agnostic",
+     "m": "hierarchy of any type",
+     "s": "lit"
+    }
+   ]
+  },
+  {
+   "id": "read",
+   "n": "Axis 3",
+   "t": "Readout (estimator)",
+   "sub": "After the loop ends, how the fitted surrogate is turned into one number P\u0302f. Independent of which points were chosen \u2014 same design, different readout, different answer.",
+   "eff": "A9\u2192A11 is a pure readout effect: \u221211.80 points",
+   "opts": [
+    {
+     "k": "hard",
+     "l": "Hard indicator",
+     "m": "mean 1(\u03bc \u2264 0) \u00b7 A1\u2013A4",
+     "s": "code"
+    },
+    {
+     "k": "med",
+     "l": "Median quantile",
+     "m": "A5-U onward",
+     "s": "code"
+    },
+    {
+     "k": "bag",
+     "l": "Bag + smooth",
+     "m": "A5",
+     "s": "code"
+    },
+    {
+     "k": "rb",
+     "l": "Rao\u2013Blackwellised",
+     "m": "RB \u00b7 best",
+     "s": "code"
+    },
+    {
+     "k": "isw",
+     "l": "IS-weighted",
+     "m": "\u03a3 w\u00b71 / N",
+     "s": "lit"
+    },
+    {
+     "k": "bayes",
+     "l": "Bayesian posterior",
+     "m": "credible interval on Pf",
+     "s": "lit"
+    }
+   ]
+  },
+  {
+   "id": "uq",
+   "n": "Axis 4",
+   "t": "UQ source",
+   "sub": "Where the width w comes from",
+   "eff": "CQR is a no-op unless observations are corrupted",
+   "opts": [
+    {
+     "k": "gpsig",
+     "l": "GP posterior \u03c3",
+     "m": "A1, A2",
+     "s": "code"
+    },
+    {
+     "k": "kfold",
+     "l": "K-fold conformal",
+     "m": "w = q\u03c1 \u00b7 A3\u2013A5",
+     "s": "code"
+    },
+    {
+     "k": "native",
+     "l": "TabICL native",
+     "m": "(q95\u2212q05)/2 \u00b7 A7, A8",
+     "s": "code"
+    },
+    {
+     "k": "cqra",
+     "l": "CQR additive",
+     "m": "+ Q_c \u00b7 A9\u2013A11",
+     "s": "code"
+    },
+    {
+     "k": "cqrm",
+     "l": "CQR multiplicative",
+     "m": "\u00d7 (1+\u03bb)",
+     "s": "code"
+    },
+    {
+     "k": "boot",
+     "l": "Bootstrap / ens.",
+     "m": "\u2014",
+     "s": "lit"
+    },
+    {
+     "k": "bq",
+     "l": "BQ posterior",
+     "m": "Pf as a random variable",
+     "s": "lit"
+    },
+    {
+     "k": "na",
+     "l": "n/a \u2014 no surrogate",
+     "m": "\u2014",
+     "s": "lit"
+    }
+   ]
+  },
+  {
+   "id": "acq",
+   "n": "Axis 5",
+   "t": "Acquisition / learning function",
+   "sub": "Which point to evaluate next",
+   "eff": "SECOND-ORDER \u2014 six rules inside one seed scatter",
+   "opts": [
+    {
+     "k": "amb",
+     "l": "Sign-ambiguity (U)",
+     "m": "A1, A8, A10",
+     "s": "code"
+    },
+    {
+     "k": "ucb",
+     "l": "UCB  w \u00d7 amb",
+     "m": "A2\u2013A5, A7, A9",
+     "s": "code"
+    },
+    {
+     "k": "eff",
+     "l": "EFF",
+     "m": "Bichon et al. \u00b7 1.3%",
+     "s": "code"
+    },
+    {
+     "k": "cont",
+     "l": "Contour improvement",
+     "m": "Ranjan et al.",
+     "s": "lit"
+    },
+    {
+     "k": "maxmin",
+     "l": "Max-min boundary distance",
+     "m": "EDSD \u00b7 geometric",
+     "s": "lit"
+    },
+    {
+     "k": "effc",
+     "l": "EFF + CQR",
+     "m": "conformal offset \u00b7 1.1%",
+     "s": "code"
+    },
+    {
+     "k": "hls",
+     "l": "H / LIF / SUR",
+     "m": "Lv, Sun, Bect \u00b7 all tie U",
+     "s": "code"
+    },
+    {
+     "k": "pbw",
+     "l": "Probability-band width",
+     "m": "A12 (pcjoint) \u00b7 2.7%",
+     "s": "code"
+    },
+    {
+     "k": "rand",
+     "l": "Random",
+     "m": "no search \u00b7 1.8% \u2014 ties EFF",
+     "s": "code"
+    },
+    {
+     "k": "erf",
+     "l": "REIF",
+     "m": "folded-normal \u00b7 Zhang 2019",
+     "s": "lit"
+    },
+    {
+     "k": "bqv",
+     "l": "Pf-variance reduction",
+     "m": "Bayesian quadrature",
+     "s": "lit"
+    },
+    {
+     "k": "naq",
+     "l": "n/a \u2014 no learning loop",
+     "m": "\u2014",
+     "s": "lit"
+    },
+    {
+     "k": "rl",
+     "l": "Bandit / RL portfolio",
+     "m": "learned gating",
+     "s": "open"
+    }
+   ]
+  },
+  {
+   "id": "batch",
+   "n": "Axis 6",
+   "t": "Batch & candidate pool",
+   "sub": "How many points, chosen from where",
+   "eff": "",
+   "opts": [
+    {
+     "k": "single",
+     "l": "Single pt., full pop.",
+     "m": "A1\u2013A4 \u00b7 AK-MCS",
+     "s": "code"
+    },
+    {
+     "k": "b8",
+     "l": "Fixed-size batch (greedy or joint)",
+     "m": "local penalisation \u00b7 A5\u2013A12",
+     "s": "code"
+    },
+    {
+     "k": "cand",
+     "l": "CAND = 6000 subsample",
+     "m": "A5\u2013A12",
+     "s": "code"
+    },
+    {
+     "k": "trunc",
+     "l": "Truncated candidate region",
+     "m": "principled, not random",
+     "s": "lit"
+    },
+    {
+     "k": "kmeans",
+     "l": "K-means batch",
+     "m": "AK-MCSi \u00b7 Leli\u00e8vre et al.",
+     "s": "code"
+    },
+    {
+     "k": "parreg",
+     "l": "Parallel adapt. regions",
+     "m": "\u2014",
+     "s": "lit"
+    },
+    {
+     "k": "adapt",
+     "l": "Adaptive batch size",
+     "m": "\u2014",
+     "s": "open"
+    }
+   ]
+  },
+  {
+   "id": "pop",
+   "n": "Axis 7",
+   "t": "Population & sampling",
+   "sub": "How the candidate population is drawn",
+   "eff": "PINNED \u2014 never varied in 208 files",
+   "opts": [
+    {
+     "k": "mc",
+     "l": "Crude Monte Carlo",
+     "m": "N = 20\u2013200k \u00b7 all arms",
+     "s": "code"
+    },
+    {
+     "k": "ss",
+     "l": "Subset simulation",
+     "m": "AK-SS \u00b7 nested events",
+     "s": "lit"
+    },
+    {
+     "k": "isc",
+     "l": "Classical IS",
+     "m": "AK-IS \u00b7 design point",
+     "s": "lit"
+    },
+    {
+     "k": "rad",
+     "l": "Radial / annulus IS",
+     "m": "ARBIS \u00b7 no single MPP",
+     "s": "lit"
+    },
+    {
+     "k": "meta",
+     "l": "meta-IS",
+     "m": "proposal from surrogate",
+     "s": "lit"
+    },
+    {
+     "k": "ce",
+     "l": "CE-IS",
+     "m": "GM / vMFN \u00b7 weighted MLE",
+     "s": "lit"
+    },
+    {
+     "k": "sis",
+     "l": "Sequential IS",
+     "m": "tempered \u00b7 MCMC-driven",
+     "s": "lit"
+    },
+    {
+     "k": "line",
+     "l": "Line / directional",
+     "m": "BAL line sampling",
+     "s": "lit"
+    },
+    {
+     "k": "strat",
+     "l": "Stratified / LHS",
+     "m": "variance reduction",
+     "s": "lit"
+    },
+    {
+     "k": "nis",
+     "l": "Neural IS",
+     "m": "normalizing flow \u00b7 REIN",
+     "s": "lit"
+    },
+    {
+     "k": "ttis",
+     "l": "Transport-map IS",
+     "m": "tensor train \u00b7 not neural",
+     "s": "lit"
+    }
+   ]
+  },
+  {
+   "id": "stop",
+   "n": "Axis 8",
+   "t": "Stopping criterion",
+   "sub": "When the loop ends",
+   "eff": "PINNED \u2014 no arm stops on a criterion",
+   "opts": [
+    {
+     "k": "budget",
+     "l": "Fixed FE budget",
+     "m": "all arms \u00b7 \u2248300",
+     "s": "code"
+    },
+    {
+     "k": "lft",
+     "l": "Learning-fn. threshold",
+     "m": "min U \u2265 2 \u00b7 EFF < \u03b5",
+     "s": "lit"
+    },
+    {
+     "k": "pfcov",
+     "l": "Pf CoV / stability",
+     "m": "\u2014",
+     "s": "lit"
+    },
+    {
+     "k": "err",
+     "l": "Error-rate bound",
+     "m": "REAK",
+     "s": "lit"
+    },
+    {
+     "k": "conf",
+     "l": "Conformal coverage",
+     "m": "AK-MCS-C2 \u00b7 2026",
+     "s": "lit"
+    }
+   ]
+  },
+  {
+   "id": "fid",
+   "n": "Axis 9",
+   "t": "Fidelity",
+   "sub": "How many model levels the loop uses",
+   "eff": "PINNED \u2014 never varied",
+   "opts": [
+    {
+     "k": "sf",
+     "l": "Single fidelity",
+     "m": "one FE model \u00b7 all arms",
+     "s": "code"
+    },
+    {
+     "k": "cok",
+     "l": "Multi-fidelity co-Kriging",
+     "m": "cheap + expensive levels",
+     "s": "lit"
+    },
+    {
+     "k": "rom",
+     "l": "Reduced-order / coarse mesh",
+     "m": "hierarchical",
+     "s": "lit"
+    },
+    {
+     "k": "adapf",
+     "l": "Adaptive fidelity selection",
+     "m": "choose level per point",
+     "s": "open"
+    }
+   ]
+  },
+  {
+   "id": "dim",
+   "n": "Axis 10",
+   "t": "Dimension handling",
+   "sub": "What the surrogate sees",
+   "eff": "PINNED \u2014 never varied",
+   "opts": [
+    {
+     "k": "full",
+     "l": "Full input space",
+     "m": "all NRV \u00b7 all arms",
+     "s": "code"
+    },
+    {
+     "k": "fidr",
+     "l": "Failure-informed DR",
+     "m": "Uribe et al. \u00b7 with CE-IS",
+     "s": "lit"
+    },
+    {
+     "k": "assub",
+     "l": "Active subspace",
+     "m": "gradient-based",
+     "s": "lit"
+    },
+    {
+     "k": "pls",
+     "l": "PLS / sliced inverse",
+     "m": "\u2014",
+     "s": "lit"
+    },
+    {
+     "k": "ae",
+     "l": "Learned latent space",
+     "m": "autoencoder",
+     "s": "open"
+    }
+   ]
+  },
+  {
+   "id": "ls",
+   "n": "Axis 11",
+   "t": "Limit-state composition",
+   "sub": "What the surrogate is asked to represent",
+   "eff": "PINNED \u2014 always the composed min",
+   "opts": [
+    {
+     "k": "composed",
+     "l": "Composed g = min(\u00b7)",
+     "m": "one surrogate on the min \u00b7 all arms",
+     "s": "code"
+    },
+    {
+     "k": "percomp",
+     "l": "Per-component surrogates",
+     "m": "system event assembled after",
+     "s": "lit"
+    },
+    {
+     "k": "disjoint",
+     "l": "Multiple disjoint regions",
+     "m": "designed for several MPPs",
+     "s": "lit"
+    },
+    {
+     "k": "adaptmode",
+     "l": "Adaptive mode identification",
+     "m": "\u2014",
+     "s": "open"
+    }
+   ]
+  }
+ ],
+ "ARMS": {
+  "A1": {
+   "g": "here",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "gp",
+    "read": "hard",
+    "uq": "gpsig",
+    "acq": "amb",
+    "batch": "single",
+    "pop": "mc",
+    "stop": "budget",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "GP surrogate, sign-ambiguity acquisition, one point per iteration over the full population. <em>This is AK-MCS with a fixed budget instead of a stopping rule.</em>"
+  },
+  "A2": {
+   "g": "here",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "gp",
+    "read": "hard",
+    "uq": "gpsig",
+    "acq": "ucb",
+    "batch": "single",
+    "pop": "mc",
+    "stop": "budget",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "A1 with UCB exploration: \u03c3 \u00d7 ambiguity. Isolates exploration from calibration."
+  },
+  "A3": {
+   "g": "here",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "gp",
+    "read": "hard",
+    "uq": "kfold",
+    "acq": "ucb",
+    "batch": "single",
+    "pop": "mc",
+    "stop": "budget",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Same GP mean; the width becomes a distribution-free jackknife interval scaled by nearest-neighbour distance."
+  },
+  "A4": {
+   "g": "here",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "xgb",
+    "read": "hard",
+    "uq": "kfold",
+    "acq": "ucb",
+    "batch": "single",
+    "pop": "mc",
+    "stop": "budget",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "XGBoost replaces the GP mean. Data-hungry \u2014 blocky on 12-62 points."
+  },
+  "A5": {
+   "g": "here",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "tabicl",
+    "read": "med",
+    "uq": "kfold",
+    "acq": "ucb",
+    "batch": "b8",
+    "pop": "mc",
+    "stop": "budget",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "TabICL foundation model + K-fold conformal width. First arm under 1% on the smooth truss suite."
+  },
+  "A7": {
+   "g": "here",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "tabicl",
+    "read": "med",
+    "uq": "native",
+    "acq": "ucb",
+    "batch": "b8",
+    "pop": "mc",
+    "stop": "budget",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "A5 with TabICL's own native band instead of the conformal width. Isolates what conformal calibration adds."
+  },
+  "A8": {
+   "g": "here",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "tabicl",
+    "read": "med",
+    "uq": "native",
+    "acq": "amb",
+    "batch": "b8",
+    "pop": "mc",
+    "stop": "budget",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Underflow-free sign-ambiguity (s = \u03c3/|\u03bc|) on the native band. <em>Best margin-target arm on the truss suite.</em>"
+  },
+  "A9": {
+   "g": "here",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "tabicl",
+    "read": "med",
+    "uq": "cqra",
+    "acq": "ucb",
+    "batch": "b8",
+    "pop": "mc",
+    "stop": "budget",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "CQR band keeps TabICL's input-dependent band shape and adds a conformal offset Q_c for coverage."
+  },
+  "A10": {
+   "g": "here",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "tabicl",
+    "read": "med",
+    "uq": "cqra",
+    "acq": "amb",
+    "batch": "b8",
+    "pop": "mc",
+    "stop": "budget",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "A8 \u00d7 A9 hybrid: sign-ambiguity form, CQR band as \u03c3."
+  },
+  "A11": {
+   "g": "here",
+   "c": {
+    "ls": "composed",
+    "tgt": "tg",
+    "surr": "tabicl",
+    "read": "med",
+    "uq": "cqra",
+    "acq": "ucb",
+    "batch": "b8",
+    "pop": "mc",
+    "stop": "budget",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "A9's design with the readout surrogate fitted on T(g) = g/(1+|g|). <em>The robust margin-target arm</em> wherever the compression acts."
+  },
+  "A12": {
+   "g": "here",
+   "c": {
+    "ls": "composed",
+    "tgt": "tg",
+    "surr": "tabicl",
+    "read": "med",
+    "uq": "native",
+    "acq": "amb",
+    "batch": "b8",
+    "pop": "mc",
+    "stop": "budget",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "A8's acquisition with A11's compressed target. <em>Verdict: does not work.</em> The compression is a pairing with the CQR design, not a portable fix."
+  },
+  "EFF+CQR": {
+   "g": "here",
+   "c": {
+    "ls": "composed",
+    "tgt": "beta",
+    "surr": "tabicl",
+    "read": "rb",
+    "uq": "cqra",
+    "acq": "effc",
+    "batch": "b8",
+    "pop": "mc",
+    "stop": "budget",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "<em>Best arm measured anywhere in this project: 1.1 \u00b1 1.2%.</em> Capacity-side \u03b2 target, EFF with a conformal offset, Rao-Blackwellised readout."
+  },
+  "EFF-RB": {
+   "g": "here",
+   "c": {
+    "ls": "composed",
+    "tgt": "beta",
+    "surr": "tabicl",
+    "read": "rb",
+    "uq": "native",
+    "acq": "eff",
+    "batch": "b8",
+    "pop": "mc",
+    "stop": "budget",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Same as EFF+CQR without the conformal offset \u2014 1.3 \u00b1 0.8%. On clean data the offset is a no-op, so these two are statistically indistinguishable."
+  },
+  "A12-rand": {
+   "g": "here",
+   "c": {
+    "ls": "composed",
+    "tgt": "beta",
+    "surr": "tabicl",
+    "read": "rb",
+    "uq": "native",
+    "acq": "rand",
+    "batch": "b8",
+    "pop": "mc",
+    "stop": "budget",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "<em>A random 300-point design.</em> 1.8 \u00b1 1.1% \u2014 ties EFF and beats the U-function. The single most informative arm in the project: it prices what active learning is actually buying at this target."
+  },
+  "A8-RB": {
+   "g": "here",
+   "c": {
+    "ls": "composed",
+    "tgt": "beta",
+    "surr": "tabicl",
+    "read": "rb",
+    "uq": "native",
+    "acq": "amb",
+    "batch": "b8",
+    "pop": "mc",
+    "stop": "budget",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "U-function acquisition on the \u03b2 target with RB readout \u2014 2.5 \u00b1 1.9%. Worse than random."
+  },
+  "A12-pc": {
+   "g": "here",
+   "c": {
+    "ls": "composed",
+    "tgt": "beta",
+    "surr": "tabicl",
+    "read": "rb",
+    "uq": "native",
+    "acq": "pbw",
+    "batch": "b8",
+    "pop": "mc",
+    "stop": "budget",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Probability-band-width acquisition on the \u03b2 target \u2014 2.7 \u00b1 1.7%. <em>A different method from the A12 above</em> \u2014 two unrelated things carry that name here."
+  }
+ },
+ "LIT": {
+  "AK-MCS-C2": {
+   "g": "modern",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "gp",
+    "read": "hard",
+    "uq": "kfold",
+    "acq": "amb",
+    "batch": "single",
+    "pop": "mc",
+    "stop": "conf",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "<em>AK-MCS wrapped in conformal prediction.</em> Instead of thresholding a learning function, the loop terminates when a <b>distribution-free conformal interval</b> on P<sub>f</sub> reaches a target tightness, giving a certified bound at a user-chosen coverage level rather than a point estimate. This closes the conformal-coverage stopping cell, which was marked open on this page until 2026 &mdash; and it sits directly on top of this project&rsquo;s own line of work.",
+   "r": "Jaber, Chabridon &amp; Mougeot, &ldquo;AK-MCS-C2: active Kriging Monte Carlo simulation method with conformal certification for failure probability estimation&rdquo;, <b>arXiv 2606.20191</b>, 19 June 2026. Code: github.com/EdgarJaber/AK-MCS-C2. <b>Checked</b> &mdash; preprint, not yet a journal version."
+  },
+  "MFIS": {
+   "g": "modern",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "agn",
+    "read": "isw",
+    "uq": "gpsig",
+    "acq": "amb",
+    "batch": "single",
+    "pop": "meta",
+    "stop": "pfcov",
+    "fid": "rom",
+    "dim": "full"
+   },
+   "d": "Multifidelity importance sampling: a cheap surrogate is used <em>only</em> to construct the biasing density, and every weight in the estimator is evaluated with the high-fidelity model \u2014 so surrogate error costs variance, never bias. The cleanest statement of the argument I gave you for fitting a proposal on a surrogate. <b>Verified citation.</b>",
+   "r": "Peherstorfer, Cui, Marzouk &amp; Willcox, &ldquo;Multifidelity importance sampling&rdquo;, <b>CMAME</b> 300, 490-509, 2016 (doi 10.1016/j.cma.2015.12.002)."
+  },
+  "NN-SuS": {
+   "g": "found",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "nn",
+    "read": "hard",
+    "uq": "na",
+    "acq": "naq",
+    "batch": "single",
+    "pop": "ss",
+    "stop": "pfcov",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Neural-network surrogates accelerating each conditional level of subset simulation \u2014 an early demonstration that the expensive part of SuS is the per-level model calls, not the MCMC.",
+   "r": "Papadopoulos, Giovanis, Lagaros &amp; Papadrakakis, <b>CMAME</b> 223, 70-80, 2012 (doi 10.1016/j.cma.2012.02.013). <b>Verified.</b>"
+  },
+  "AK-Gibbs": {
+   "g": "modern",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "gp",
+    "read": "hard",
+    "uq": "gpsig",
+    "acq": "amb",
+    "batch": "single",
+    "pop": "sis",
+    "stop": "lft",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Active-learning Kriging driven by a <em>Gibbs</em> importance-sampling sampler, aimed specifically at small failure probabilities with non-linear, high-dimensional limit states \u2014 the regime where a single-shot proposal degenerates.",
+   "r": "Zhang, Zhao, Xu, Li &amp; Wang, <b>CMAME</b> 426, 116992, 2024. <b>Verified.</b>"
+  },
+  "AK-truncCR": {
+   "g": "modern",
+   "cf": "ver",
+   "c": {
+    "ls": "percomp",
+    "tgt": "margin",
+    "surr": "gp",
+    "read": "hard",
+    "uq": "gpsig",
+    "acq": "amb",
+    "batch": "trunc",
+    "pop": "mc",
+    "stop": "lft",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Restricts the candidate pool to a <em>truncated region</em> around the current boundary estimate instead of scoring the whole population \u2014 the principled version of a random candidate subsample, and applied to system reliability with several components.",
+   "r": "Yang, Liu, Mi and co-authors, <b>RESS</b> 169, 235-241, 2018. <b>Verified &mdash; authors found and year corrected</b> from an earlier guess of 2016/2017."
+  },
+  "MF-CE": {
+   "g": "modern",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "agn",
+    "read": "isw",
+    "uq": "gpsig",
+    "acq": "amb",
+    "batch": "single",
+    "pop": "ce",
+    "stop": "pfcov",
+    "fid": "rom",
+    "dim": "full"
+   },
+   "d": "Multifidelity <em>preconditioning</em> of the cross-entropy method: a hierarchy of cheap surrogates does the expensive part \u2014 iterating the tempered CE fit to locate the biasing density \u2014 and the high-fidelity model is reserved for the final estimator. Reported speedups of several orders of magnitude over single-fidelity CE. <em>This is the direct answer to running CE-IS on a surrogate.</em> <b>Verified citation.</b>",
+   "r": "Peherstorfer, Kramer &amp; Willcox, <b>SIAM/ASA J. Uncertainty Quantification</b> 6(2), 737-761, 2018."
+  },
+  "DIS-TT": {
+   "g": "modern",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "none",
+    "read": "isw",
+    "uq": "gpsig",
+    "acq": "amb",
+    "batch": "single",
+    "pop": "ttis",
+    "stop": "pfcov",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Approximates the optimal IS density as the pushforward of a reference under a <em>composition</em> of order-preserving maps built from squared tensor-train decompositions. The non-neural competitor to REIN: same goal, functional approximation instead of a network, and it handles multimodal densities concentrated in the tails. <b>Verified citation.</b>",
+   "r": "Cui, Dolgov &amp; Scheichl, <b>SIAM J. Scientific Computing</b> 46(1), C1-C29, 2024; foundations in Cui &amp; Dolgov, <b>Found. Comput. Math.</b> 22(6), 1863-1922, 2022."
+  },
+  "MF-failprob": {
+   "g": "modern",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "agn",
+    "read": "isw",
+    "uq": "gpsig",
+    "acq": "amb",
+    "batch": "single",
+    "pop": "isc",
+    "stop": "pfcov",
+    "fid": "rom",
+    "dim": "full"
+   },
+   "d": "Combines an <em>arbitrary number</em> of surrogates of any type \u2014 coarse meshes, reduced-order models, data-fit metamodels \u2014 into one unbiased failure-probability estimator, with the high-fidelity model called only where the cheap ones disagree. The named occupant of the reduced-order fidelity cell, and the last dark cell on this page. <b>Verified citation.</b>",
+   "r": "Peherstorfer, Kramer &amp; Willcox, &ldquo;Combining multiple surrogate models to accelerate failure probability estimation with expensive high-fidelity models&rdquo;, <b>J. Computational Physics</b> 341, 61-75, 2017."
+  },
+  "REIF": {
+   "g": "modern",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "gp",
+    "read": "hard",
+    "uq": "gpsig",
+    "acq": "erf",
+    "batch": "single",
+    "pop": "mc",
+    "stop": "lft",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Reliability-based expected improvement, derived from the <em>folded-normal</em> distribution of |g| under the Kriging posterior \u2014 so the criterion is an expected improvement toward the limit state rather than a distance-to-boundary heuristic like U or a feasibility integral like EFF. REIF2 additionally modulates by the input joint density, which is the correction your own IS discussion would demand. <b>Verified citation.</b>",
+   "r": "Zhang, Wang &amp; S&oslash;rensen, &ldquo;REIF: a novel active-learning function toward adaptive Kriging surrogate models for structural reliability analysis&rdquo;, <b>RESS</b> 185, 440-454, 2019."
+  },
+  "SubSim-Bayes": {
+   "g": "found",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "none",
+    "read": "bayes",
+    "uq": "na",
+    "acq": "naq",
+    "batch": "single",
+    "pop": "ss",
+    "stop": "pfcov",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "A Bayesian post-processor for subset simulation: instead of a point estimate, P<sub>f</sub> gets a full posterior from the conditional-level counts, plus MCMC enhancements aimed squarely at high dimensions. The honest answer to &ldquo;what is the uncertainty on my subset-simulation number&rdquo;. <b>Verified citation.</b>",
+   "r": "Zuev, Beck, Au &amp; Katafygiotis, <b>Computers &amp; Structures</b> 92-93, 283-296, 2012."
+  },
+  "EDSD": {
+   "g": "found",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "othr",
+    "surr": "svmc",
+    "read": "hard",
+    "uq": "na",
+    "acq": "maxmin",
+    "batch": "single",
+    "pop": "mc",
+    "stop": "lft",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Explicit design space decomposition: an SVM builds an <em>explicit</em> analytical boundary between safe and failed, updated by three geometric rules \u2014 a sample at a set distance from the nearest training point, one at maximum distance from the last added, and one at maximum-minimum distance from all existing. Purely geometric enrichment, no probabilistic model. <b>Verified citation.</b>",
+   "r": "Basudhar &amp; Missoum, <b>Computers &amp; Structures</b> 86, 1904-1917, 2008."
+  },
+  "AK-SVR": {
+   "g": "modern",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "svr",
+    "read": "hard",
+    "uq": "boot",
+    "acq": "amb",
+    "batch": "single",
+    "pop": "ss",
+    "stop": "lft",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Adaptive support-vector <em>regression</em> inside subset simulation \u2014 a margin-regressing SVM rather than 2SMART&rsquo;s classifier, so the conditional levels get a continuous surrogate. Reaches very small P<sub>f</sub> without a Gaussian process.",
+   "r": "Bourinet, <b>RESS</b> 150, 210-221, 2016. <b>Verified.</b>"
+  },
+  "Perrin-multimode": {
+   "g": "modern",
+   "cf": "ver",
+   "c": {
+    "ls": "percomp",
+    "tgt": "margin",
+    "surr": "gp",
+    "read": "hard",
+    "uq": "gpsig",
+    "acq": "cont",
+    "batch": "single",
+    "pop": "mc",
+    "stop": "lft",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Active-learning surrogates built for systems with <em>several</em> failure modes at once, refining whichever mode governs at each candidate rather than the composed minimum. An independent route to the same place as AK-SYS.",
+   "r": "Perrin, <b>RESS</b> 149, 130-136, 2016. <b>Verified.</b>"
+  },
+  "AK-stratIS": {
+   "g": "modern",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "gp",
+    "read": "isw",
+    "uq": "gpsig",
+    "acq": "amb",
+    "batch": "single",
+    "pop": "strat",
+    "stop": "lft",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Stratified importance sampling driven by an adaptive Kriging model: the sample budget is allocated across strata by their contribution to the variance of P&#770;<sub>f</sub>, with the surrogate deciding which strata matter. The named occupant of the stratified cell.",
+   "r": "Xiao, Oladyshkin &amp; Nowak, <b>RESS</b> 197, 2020 (doi 10.1016/j.ress.2020.106852). <b>Verified &mdash; authors corrected</b>, previously misattributed here to &ldquo;Xiao, Zhan &amp; Shi&rdquo;."
+  },
+  "LHS-reliability": {
+   "g": "found",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "none",
+    "read": "hard",
+    "uq": "na",
+    "acq": "naq",
+    "batch": "single",
+    "pop": "strat",
+    "stop": "pfcov",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "The systematic study of Latin hypercube and stratified designs for reliability specifically \u2014 where variance reduction actually materialises in the tail and where it does not. The foundational anchor for that cell.",
+   "r": "Olsson, Sandberg &amp; Dahlblom, <b>Structural Safety</b> 25(1), 47-68, 2003. <b>Verified.</b>"
+  },
+  "AK-multiregion": {
+   "g": "found",
+   "cf": "ver",
+   "c": {
+    "ls": "disjoint",
+    "tgt": "margin",
+    "surr": "gp",
+    "read": "isw",
+    "uq": "gpsig",
+    "acq": "amb",
+    "batch": "single",
+    "pop": "meta",
+    "stop": "lft",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "An adaptive-Kriging importance technique built specifically for limit states whose failure domain splits into <em>several</em> low-probability regions, which a single design-point proposal silently misses.",
+   "r": "Cadini, Santos &amp; Zio, <b>RESS</b> 131, 109-117, 2014. <b>Verified.</b>"
+  },
+  "AK-SS-explore": {
+   "g": "modern",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "gp",
+    "read": "hard",
+    "uq": "gpsig",
+    "acq": "ucb",
+    "batch": "single",
+    "pop": "ss",
+    "stop": "lft",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Kriging inside subset simulation with an acquisition that explicitly balances exploration of the failure region against exploitation of the current boundary estimate \u2014 the closest published relative of your UCB arms.",
+   "r": "Zhang, Xiao &amp; Gao, <b>RESS</b> 188, 90-102, 2019 (doi 10.1016/j.ress.2019.03.002). <b>Verified.</b>"
+  },
+  "ASS-seq": {
+   "g": "modern",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "gp",
+    "read": "hard",
+    "uq": "gpsig",
+    "acq": "cont",
+    "batch": "kmeans",
+    "pop": "mc",
+    "stop": "err",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "A sequential sampling scheme that adapts both where and how many points to add per iteration, judged against an accuracy measure of the surrogate rather than a fixed budget.",
+   "r": "Xiao, Zuo &amp; Zhou, <b>RESS</b> 169, 330-338, 2018 (doi 10.1016/j.ress.2017.09.008). <b>Verified.</b>"
+  },
+  "Kriging-accuracy": {
+   "g": "modern",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "gp",
+    "read": "hard",
+    "uq": "boot",
+    "acq": "amb",
+    "batch": "single",
+    "pop": "mc",
+    "stop": "err",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Two accuracy measures for the Kriging model in reliability analysis \u2014 an attempt to say how wrong P&#770;<sub>f</sub> can be given the current surrogate, rather than thresholding a learning function. Same problem REAK and ESC attack.",
+   "r": "Wang, Sun, Yang &amp; Li, <b>RESS</b> 167, 494-505, 2017. <b>Verified &mdash; authors corrected</b>; previously listed here as &ldquo;Jian, Zhu, Liang&rdquo;, a mis-parse of the lead author&rsquo;s given name."
+  },
+  "parallel-SUR": {
+   "g": "found",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "gp",
+    "read": "bayes",
+    "uq": "gpsig",
+    "acq": "hls",
+    "batch": "b8",
+    "pop": "mc",
+    "stop": "pfcov",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Fast parallel stepwise uncertainty reduction: selects a whole <em>batch</em> by the expected joint reduction in excursion-set uncertainty, with the closed forms that make it computable. The principled version of batch selection your local-penalisation heuristic approximates.",
+   "r": "Chevalier, Bect, Ginsbourger, Vazquez, Picheny &amp; Richet, <b>Technometrics</b> 56(4), 455-465, 2014. <b>Verified.</b>"
+  },
+  "RSM-1990": {
+   "g": "found",
+   "cf": "high",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "rsm",
+    "read": "hard",
+    "uq": "na",
+    "acq": "naq",
+    "batch": "single",
+    "pop": "mc",
+    "stop": "budget",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "The origin of the whole idea: replace the finite-element model with a quadratic response surface fitted near the design point, then run FORM or sampling on the cheap surface. Every surrogate reliability method descends from this.",
+   "r": "Bucher &amp; Bourgund, &ldquo;A fast and efficient response surface approach for structural reliability problems&rdquo;, <b>Structural Safety</b> 7(1), 1990."
+  },
+  "CQ2RS": {
+   "g": "found",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "rsm",
+    "read": "hard",
+    "uq": "boot",
+    "acq": "amb",
+    "batch": "single",
+    "pop": "mc",
+    "stop": "pfcov",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "A statistical reworking of the response-surface method that treats the fitted surface as uncertain and uses that uncertainty to place the next experiments \u2014 an active-learning idea a decade before AK-MCS, from the same Clermont group.",
+   "r": "Gayton, Bourinet &amp; Lemaire, <b>Structural Safety</b> 25(1), 99-121, 2003 (doi 10.1016/S0167-4730(02)00045-0). <b>Verified.</b>"
+  },
+  "IS-highdim": {
+   "g": "found",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "none",
+    "read": "isw",
+    "uq": "na",
+    "acq": "naq",
+    "batch": "single",
+    "pop": "isc",
+    "stop": "pfcov",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "The paper behind the caveat that importance sampling is <em>not</em> automatically dead in high dimensions: a pure mean-shift to the design point degrades gracefully, whereas scaling the proposal covariance is what makes the weights collapse as d grows.",
+   "r": "Au &amp; Beck, <b>Structural Safety</b> 25(2), 139-163, 2003. <b>Verified.</b> The geometric counterpart is Katafygiotis &amp; Zuev, <b>Prob. Eng. Mechanics</b>, 2008."
+  },
+  "ARBIS": {
+   "g": "found",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "none",
+    "read": "isw",
+    "uq": "na",
+    "acq": "naq",
+    "batch": "single",
+    "pop": "rad",
+    "stop": "pfcov",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Adaptive radial-based importance sampling: samples in a growing spherical annulus in standard normal space, adapting the inner radius, instead of centring on one MPP. The origin of the AK-ARBIS family.",
+   "r": "Grooteman, <b>Structural Safety</b> 30(6), 533-542, 2008. <b>Verified.</b>"
+  },
+  "multi-MPP": {
+   "g": "found",
+   "cf": "ver",
+   "c": {
+    "ls": "disjoint",
+    "tgt": "margin",
+    "surr": "none",
+    "read": "isw",
+    "uq": "na",
+    "acq": "naq",
+    "batch": "single",
+    "pop": "isc",
+    "stop": "pfcov",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Systematic location of <em>multiple</em> design points by barrier-constrained re-solves, so an IS proposal can cover several disjoint failure regions instead of the one FORM happens to find first.",
+   "r": "Der Kiureghian &amp; Dakessian, <b>Structural Safety</b> 20(1), 37-50, 1998. <b>Verified.</b>"
+  },
+  "adv-LS": {
+   "g": "found",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "none",
+    "read": "isw",
+    "uq": "na",
+    "acq": "naq",
+    "batch": "single",
+    "pop": "line",
+    "stop": "pfcov",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Advanced line sampling: adapts the important direction as lines are drawn and reuses roots between lines, which is what makes line sampling competitive rather than merely elegant.",
+   "r": "de Angelis, Patelli &amp; Beer, <b>Structural Safety</b> 52, 170-182, 2015. <b>Verified.</b>"
+  },
+  "meta-LS": {
+   "g": "found",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "othr",
+    "surr": "gp",
+    "read": "hard",
+    "uq": "gpsig",
+    "acq": "amb",
+    "batch": "single",
+    "pop": "line",
+    "stop": "lft",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Line sampling where a Kriging model supplies the root along each line instead of a bisection on the true model \u2014 the surrogate is asked for a 1-D root, not a full boundary.",
+   "r": "Depina, Le, Fenton &amp; Eiksund, <b>Structural Safety</b> 60, 1-15, 2016. <b>Verified.</b>"
+  },
+  "SKRA-par": {
+   "g": "modern",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "gp",
+    "read": "hard",
+    "uq": "gpsig",
+    "acq": "amb",
+    "batch": "parreg",
+    "pop": "mc",
+    "stop": "lft",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Sequential Kriging reliability with adaptive sampling <em>regions</em>: restricts candidates to a shrinking region around the boundary and draws a whole batch from it per iteration, so the expensive model can be run in parallel. The named occupant of the parallel-regions cell.",
+   "r": "Wen, Pei, Liu &amp; Yue, <b>RESS</b> 153, 170-179, 2016 (doi 10.1016/j.ress.2016.05.002). <b>Verified &mdash; authors corrected</b>, previously misattributed here to &ldquo;Wen, Jia &amp; Zhou&rdquo;."
+  },
+  "seq-LDR": {
+   "g": "modern",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "pce",
+    "read": "hard",
+    "uq": "gpsig",
+    "acq": "amb",
+    "batch": "single",
+    "pop": "mc",
+    "stop": "pfcov",
+    "fid": "sf",
+    "dim": "pls"
+   },
+   "d": "Learns a low-dimensional linear subspace and the reliability surrogate <em>together</em>, refining the projection as points arrive rather than fixing it up front. The most direct published answer to a 50-RV wall.",
+   "r": "Ehre, Papaioannou, Sudret &amp; Straub, <b>SIAM J. Scientific Computing</b> 44, B558-B584, 2022. <b>Verified</b> \u2014 and it is PLS-PCE driven, not an active subspace, so it sits on the PLS cell."
+  },
+  "SubSim": {
+   "g": "found",
+   "cf": "high",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "none",
+    "read": "hard",
+    "uq": "na",
+    "acq": "naq",
+    "batch": "single",
+    "pop": "ss",
+    "stop": "pfcov",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Subset simulation itself \u2014 the failure event is factored into a chain of nested, more probable conditional events sampled by MCMC. Not a surrogate method; it is the population strategy every later AL+SS hybrid sits on top of. <em>2001, so it predates the window, but it is the origin of that cell.</em>",
+   "r": "Au &amp; Beck, <b>Probabilistic Engineering Mechanics</b> 16(4), 2001. The conditional MCMC kernel is itself a live sub-question: Papaioannou, Betz, Zwirglmaier &amp; Straub, &ldquo;MCMC algorithms for subset simulation&rdquo;, <b>PEM</b> 41, 89-103, 2015 <b>(verified)</b>, compare modified-Metropolis variants and show the kernel governs performance as dimension grows."
+  },
+  "CE-method": {
+   "g": "found",
+   "cf": "high",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "none",
+    "read": "isw",
+    "uq": "na",
+    "acq": "naq",
+    "batch": "single",
+    "pop": "ce",
+    "stop": "pfcov",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "The cross-entropy method: fit a parametric proposal by minimising KL divergence to the zero-variance density, iterating through tempered intermediate events. <em>Origin of the CE-IS cell; 1997-2004, before the window.</em>",
+   "r": "Rubinstein, 1997/1999; tutorial by de Boer, Kroese, Mannor &amp; Rubinstein, <b>Annals of OR</b>, 2005."
+  },
+  "Ranjan-contour": {
+   "g": "found",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "gp",
+    "read": "hard",
+    "uq": "gpsig",
+    "acq": "cont",
+    "batch": "single",
+    "pop": "mc",
+    "stop": "lft",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Sequential design for <em>contour</em> estimation from expensive codes \u2014 the first criterion to target a level set rather than a global fit. The direct conceptual ancestor of EFF and the U-function.",
+   "r": "Ranjan, Bingham &amp; Michailidis, <b>Technometrics</b> 50(4), 527-541, 2008. <b>Verified.</b>"
+  },
+  "tIMSE": {
+   "g": "found",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "gp",
+    "read": "hard",
+    "uq": "gpsig",
+    "acq": "bqv",
+    "batch": "single",
+    "pop": "mc",
+    "stop": "pfcov",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Targeted integrated mean-square error: weights the IMSE by how close a point is to the target region, so the design refines the boundary rather than the whole domain. An early variance-reduction acquisition, not a margin heuristic.",
+   "r": "Picheny, Ginsbourger, Roustant, Haftka &amp; Kim, <b>J. Mechanical Design</b> 132(7), 071008, 2010. <b>Verified.</b>"
+  },
+  "SUR-Bect": {
+   "g": "found",
+   "cf": "high",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "gp",
+    "read": "bayes",
+    "uq": "bq",
+    "acq": "hls",
+    "batch": "single",
+    "pop": "mc",
+    "stop": "pfcov",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Stepwise uncertainty reduction: choose the point that most reduces the expected posterior variance of P<sub>f</sub> itself, rather than a proxy for boundary proximity. <em>This is the SUR your run_acq_variants.py implements and cites</em> \u2014 where it cost 9\u00d7 and gained nothing.",
+   "r": "Bect, Ginsbourger, Li, Picheny &amp; Vazquez, <b>Statistics and Computing</b> 22, 2012."
+  },
+  "2SMART": {
+   "g": "found",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "othr",
+    "surr": "svmc",
+    "read": "hard",
+    "uq": "boot",
+    "acq": "amb",
+    "batch": "single",
+    "pop": "ss",
+    "stop": "lft",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Support-vector classification driven inside subset simulation, with the margin used to place new points at each conditional level. One of the earliest AL methods to reach very small P<sub>f</sub>, and an SVM answer rather than a Kriging one.",
+   "r": "Bourinet, Deheeger &amp; Lemaire, <b>Structural Safety</b> 33(6), 343-353, 2011 (doi 10.1016/j.strusafe.2011.06.001). <b>Verified.</b>"
+  },
+  "sparse-PCE": {
+   "g": "found",
+   "cf": "high",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "pce",
+    "read": "hard",
+    "uq": "boot",
+    "acq": "amb",
+    "batch": "single",
+    "pop": "mc",
+    "stop": "pfcov",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Sparse polynomial chaos by least-angle regression \u2014 selects the few basis terms that matter instead of a full tensor expansion, which is what made PCE viable in more than a handful of dimensions.",
+   "r": "Blatman &amp; Sudret, <b>J. Computational Physics</b> 230, 2011; <b>Prob. Eng. Mech.</b> 25, 2010."
+  },
+  "AK-SYS": {
+   "g": "found",
+   "cf": "ver",
+   "c": {
+    "ls": "percomp",
+    "tgt": "margin",
+    "surr": "gp",
+    "read": "hard",
+    "uq": "gpsig",
+    "acq": "amb",
+    "batch": "single",
+    "pop": "mc",
+    "stop": "lft",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Adapts AK-MCS to <em>system</em> reliability: one Kriging model per component, and the learning function is evaluated on the composed system event rather than a single margin. Refines only the component that governs at each candidate.",
+   "r": "Fauriat &amp; Gayton, <b>RESS</b> 123, 137-144, 2014 (doi 10.1016/j.ress.2013.10.010). <b>Verified.</b> Successor: AK-SYSi with a refined U function, <b>SMO</b>, 2018."
+  },
+  "EGRA-sys": {
+   "g": "found",
+   "cf": "ver",
+   "c": {
+    "ls": "percomp",
+    "tgt": "margin",
+    "surr": "gp",
+    "read": "hard",
+    "uq": "gpsig",
+    "acq": "eff",
+    "batch": "single",
+    "pop": "mc",
+    "stop": "lft",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "The EGRA counterpart for multiple failure modes \u2014 surrogates each mode and composes, with the expected feasibility evaluated against the system limit state.",
+   "r": "Bichon, McFarland &amp; Mahadevan, <b>RESS</b> 96(10), 1386-1395, 2011. <b>Verified.</b>"
+  },
+  "Kriging-AIS": {
+   "g": "found",
+   "cf": "ver",
+   "c": {
+    "ls": "disjoint",
+    "tgt": "margin",
+    "surr": "gp",
+    "read": "isw",
+    "uq": "gpsig",
+    "acq": "amb",
+    "batch": "single",
+    "pop": "isc",
+    "stop": "pfcov",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Kriging-based <em>adaptive</em> importance sampling: the proposal is refitted as the surrogate improves, with explicit provision for several disjoint failure regions rather than one design point.",
+   "r": "Balesdent, Morio &amp; Marzat, <b>Structural Safety</b> 44, 1-10, 2013. <b>Verified.</b>"
+  },
+  "SIS": {
+   "g": "modern",
+   "cf": "high",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "none",
+    "read": "isw",
+    "uq": "na",
+    "acq": "naq",
+    "batch": "single",
+    "pop": "sis",
+    "stop": "pfcov",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Sequential importance sampling: a chain of tempered intermediate densities driven by MCMC, with the estimator accumulated across levels. The non-parametric alternative to fitting a CE family, and the direct competitor to subset simulation.",
+   "r": "Papaioannou, Papadimitriou &amp; Straub, <b>Structural Safety</b> 62, 2016."
+  },
+  "BSS": {
+   "g": "found",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "gp",
+    "read": "bayes",
+    "uq": "bq",
+    "acq": "bqv",
+    "batch": "single",
+    "pop": "ss",
+    "stop": "pfcov",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Bayesian subset simulation \u2014 puts a GP prior on the limit state and runs subset simulation under the posterior, choosing points to reduce the posterior uncertainty of each conditional probability. The earliest anchor for the Bayesian-quadrature cells.",
+   "r": "Bect, Li &amp; Vazquez, <b>SIAM/ASA J. Uncertainty Quantification</b> 5(1), 762-786, 2017. <b>Verified.</b>"
+  },
+  "APCE-boot": {
+   "g": "modern",
+   "cf": "high",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "pce",
+    "read": "hard",
+    "uq": "boot",
+    "acq": "amb",
+    "batch": "single",
+    "pop": "mc",
+    "stop": "lft",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Sparse polynomial chaos with <em>bootstrap</em> replications supplying the epistemic band, so a PCE gets a usable local error estimate without a GP posterior. This is the named occupant of the bootstrap UQ cell.",
+   "r": "Marelli &amp; Sudret, <b>Structural Safety</b> 75, 2018."
+  },
+  "SVM-MCS": {
+   "g": "modern",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "othr",
+    "surr": "svmc",
+    "read": "hard",
+    "uq": "boot",
+    "acq": "amb",
+    "batch": "single",
+    "pop": "mc",
+    "stop": "lft",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Adaptive support-vector classification of the failure domain rather than regression of the margin \u2014 the surrogate learns the boundary directly, which suits discontinuous and highly non-linear limit states.",
+   "r": "Pan &amp; Dias, <b>Structural Safety</b> 67, 85-95, 2017. <b>Verified.</b>"
+  },
+  "mfEGRA": {
+   "g": "modern",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "gp",
+    "read": "hard",
+    "uq": "gpsig",
+    "acq": "eff",
+    "batch": "single",
+    "pop": "mc",
+    "stop": "lft",
+    "fid": "cok",
+    "dim": "full"
+   },
+   "d": "Multi-fidelity EGRA: acquires <em>both</em> the location and the fidelity level, spending most calls on the cheap model and reserving the expensive one for points near the boundary. The named occupant of the multi-fidelity cell.",
+   "r": "Chaudhuri, Marques &amp; Willcox, <b>Struct. &amp; Multidisc. Optimization</b> 64(2), 2021. <b>Verified</b> (year corrected from 2020). Two-stage criterion: EGRA&rsquo;s expected feasibility plus a one-step-lookahead information gain that also picks the fidelity."
+  },
+  "KPLS-AK": {
+   "g": "modern",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "gp",
+    "read": "hard",
+    "uq": "gpsig",
+    "acq": "amb",
+    "batch": "single",
+    "pop": "mc",
+    "stop": "lft",
+    "fid": "sf",
+    "dim": "pls"
+   },
+   "d": "Kriging built on partial-least-squares components instead of the raw inputs, which keeps hyperparameter fitting tractable as the dimension grows. A cheap, generic answer to the axis your 50-RV benchmark dies on.",
+   "r": "Bouhlel, Bartoli, Otsmane &amp; Morlier, <b>Struct. &amp; Multidisc. Optimization</b> 53(5), 935-952, 2016. <b>Verified.</b>"
+  },
+  "DNN-AL": {
+   "g": "modern",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "nn",
+    "read": "hard",
+    "uq": "boot",
+    "acq": "amb",
+    "batch": "kmeans",
+    "pop": "mc",
+    "stop": "lft",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Deep network surrogate with weighted resampling in the learning loop. Needs far more points than a GP, so it earns its place only on problems where the limit state is genuinely high-dimensional or non-smooth.",
+   "r": "Xiang, Chen, Bao and co-authors, <b>Mechanical Systems &amp; Signal Processing</b> 140, 106684, 2020. <b>Verified.</b>"
+  },
+  "AK-ARBIS": {
+   "g": "modern",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "gp",
+    "read": "isw",
+    "uq": "gpsig",
+    "acq": "amb",
+    "batch": "single",
+    "pop": "rad",
+    "stop": "lft",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Kriging placed inside Grooteman&rsquo;s radial scheme, so the surrogate only has to be accurate within the current annulus. Keeps working when the failure domain is not concentrated near one MPP.",
+   "r": "Yun, Lu, Jiang, Zhang &amp; He, &ldquo;AK-ARBIS: an improved AK-MCS based on the adaptive radial-based importance sampling for small failure probability&rdquo;, <b>Structural Safety</b> 82, 101891, 2020. <b>Verified.</b>"
+  },
+  "AK-MCS": {
+   "g": "found",
+   "cf": "high",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "gp",
+    "read": "hard",
+    "uq": "gpsig",
+    "acq": "amb",
+    "batch": "single",
+    "pop": "mc",
+    "stop": "lft",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "The canonical method. Kriging + crude MCS, U-function, one point per iteration, stop when min U \u2265 2.",
+   "r": "Echard, Gayton &amp; Lemaire, <b>Structural Safety</b> 33(2), 2011."
+  },
+  "EGRA": {
+   "g": "found",
+   "cf": "high",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "gp",
+    "read": "hard",
+    "uq": "gpsig",
+    "acq": "eff",
+    "batch": "single",
+    "pop": "mc",
+    "stop": "lft",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Expected feasibility instead of U. Predates AK-MCS and is still the main alternative learning function.",
+   "r": "Bichon, Eldred, Swiler, Mahadevan &amp; McFarland, <b>AIAA Journal</b> 46(10), 2008."
+  },
+  "AK-IS": {
+   "g": "found",
+   "cf": "high",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "gp",
+    "read": "isw",
+    "uq": "gpsig",
+    "acq": "amb",
+    "batch": "single",
+    "pop": "isc",
+    "stop": "lft",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "AK-MCS with a FORM design-point IS density and a weighted estimator. The direct ancestor of combining AL with importance sampling.",
+   "r": "Echard, Gayton, Lemaire &amp; Relun, <b>Rel. Eng. &amp; System Safety</b> 111, 2013."
+  },
+  "meta-IS": {
+   "g": "found",
+   "cf": "high",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "gp",
+    "read": "isw",
+    "uq": "gpsig",
+    "acq": "amb",
+    "batch": "kmeans",
+    "pop": "meta",
+    "stop": "pfcov",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Builds the proposal from the surrogate's own epistemic uncertainty \u2014 self-defensive by construction, since it keeps mass where the model is unsure.",
+   "r": "Dubourg, Sudret &amp; Deheeger, <b>Prob. Eng. Mechanics</b> 33, 2013; extended to reliability sensitivities in <b>Structural Safety</b> 49, 2014."
+  },
+  "AK-SS": {
+   "g": "modern",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "gp",
+    "read": "hard",
+    "uq": "gpsig",
+    "acq": "amb",
+    "batch": "single",
+    "pop": "ss",
+    "stop": "lft",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "AK-MCS inside subset simulation's nested intermediate failure events. The standard route to Pf \u2264 1e-4.",
+   "r": "Huang, Chen &amp; Zhu, <b>Structural Safety</b> 59, 86-95, 2016 (doi 10.1016/j.strusafe.2015.12.003). <b>Verified.</b> The family stayed active: &ldquo;Efficient subset simulation with active learning Kriging model for low failure probability prediction&rdquo;, <b>PEM</b> 69, 2022 <b>(venue verified, authors unchecked)</b>, and a coupled SuS/AK variant in <b>SMO</b>, 2019."
+  },
+  "APCK-MCS": {
+   "g": "modern",
+   "cf": "high",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "pck",
+    "read": "hard",
+    "uq": "gpsig",
+    "acq": "amb",
+    "batch": "single",
+    "pop": "mc",
+    "stop": "lft",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Polynomial-chaos Kriging \u2014 a PCE trend with a Kriging residual \u2014 under the same AL loop.",
+   "r": "Sch&ouml;bi, Sudret &amp; Marelli, <b>ASCE-ASME J. Risk Uncertainty</b>, 2017; the PC-Kriging surrogate itself is Sch&ouml;bi, Sudret &amp; Wiart, <b>IJUQ</b> 5(2), 2015."
+  },
+  "AK-MCSi": {
+   "g": "modern",
+   "cf": "high",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "gp",
+    "read": "hard",
+    "uq": "gpsig",
+    "acq": "amb",
+    "batch": "kmeans",
+    "pop": "mc",
+    "stop": "lft",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Batch AK-MCS: take the U &lt; 2 pool, k-means it into clusters, evaluate the lowest-U member of each. Diversity by clustering instead of local penalisation.",
+   "r": "Leli&egrave;vre, Beaurepaire, Mattrand &amp; Gayton, <b>Structural Safety</b>, 2018."
+  },
+  "REAK": {
+   "g": "modern",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "gp",
+    "read": "hard",
+    "uq": "gpsig",
+    "acq": "amb",
+    "batch": "single",
+    "pop": "mc",
+    "stop": "err",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Replaces the min-U heuristic with a bound on the <em>error rate</em> of the estimated Pf, so the loop stops when the probability of misclassifying the population is provably small. The direct answer to the pinned stopping axis.",
+   "r": "Wang &amp; Shafieezadeh, <b>RESS</b> 182, 33-45, 2019. <b>Verified.</b> Companion error-based stopping criterion (ESC) by the same authors, <b>SMO</b>, 2019."
+  },
+  "PAB-BQ": {
+   "g": "modern",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "gp",
+    "read": "bayes",
+    "uq": "bq",
+    "acq": "bqv",
+    "batch": "kmeans",
+    "pop": "mc",
+    "stop": "pfcov",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Bayesian quadrature: Pf is treated as a random variable with a posterior, and points are acquired in parallel to shrink its variance. Gives a credible interval on Pf rather than a point estimate.",
+   "r": "Dang, Wei, Faes, Valdebenito &amp; Beer, <b>RESS</b> 225, 108621, 2022 (doi 10.1016/j.ress.2022.108621). <b>Verified.</b>"
+  },
+  "BAL-LS": {
+   "g": "modern",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "othr",
+    "surr": "gp",
+    "read": "bayes",
+    "uq": "bq",
+    "acq": "bqv",
+    "batch": "single",
+    "pop": "line",
+    "stop": "pfcov",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "The same Bayesian formulation applied along lines rather than over a population \u2014 line sampling with an actively learned root distribution.",
+   "r": "Dang, Valdebenito, Faes, Song, Wei &amp; Beer, &ldquo;Structural reliability analysis by line sampling: a Bayesian active learning treatment&rdquo;, <b>Structural Safety</b> 104, 102351, 2023. <b>Verified.</b> Companions: partially-Bayesian ALLS in <b>CMAME</b>, 2023, and a log-normal-process variant in <b>RESS</b> 246, 2024."
+  },
+  "FIDR-CE": {
+   "g": "modern",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "none",
+    "read": "isw",
+    "uq": "gpsig",
+    "acq": "amb",
+    "batch": "single",
+    "pop": "ce",
+    "stop": "pfcov",
+    "fid": "sf",
+    "dim": "fidr"
+   },
+   "d": "Cross-entropy IS where the proposal is fitted only in a low-dimensional <em>failure-informed</em> subspace, which is what keeps CE-IS alive as the dimension grows. The obvious lever for the 50-RV collapse.",
+   "r": "Uribe, Papaioannou, Marzouk &amp; Straub, <b>SIAM/ASA J. Uncertainty Quantification</b> 9, 818-847, 2021. <b>Verified.</b>"
+  },
+  "MF-AK": {
+   "g": "modern",
+   "cf": "high",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "agn",
+    "read": "hard",
+    "uq": "gpsig",
+    "acq": "amb",
+    "batch": "single",
+    "pop": "mc",
+    "stop": "lft",
+    "fid": "cok",
+    "dim": "full"
+   },
+   "d": "Co-Kriging over a cheap and an expensive model, acquiring both the point and the fidelity level. Reported FE savings come from spending most calls on the coarse model.",
+   "r": "&ldquo;An active-learning method based on multi-fidelity Kriging model for structural reliability analysis&rdquo;, <b>Struct. &amp; Multidisc. Optimization</b>, 2020 (doi 10.1007/s00158-020-02678-1). <b>Venue verified</b>; the canonical multi-fidelity entry on this page is mfEGRA."
+  },
+  "REIN": {
+   "g": "modern",
+   "cf": "ver",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "none",
+    "read": "isw",
+    "uq": "gpsig",
+    "acq": "amb",
+    "batch": "single",
+    "pop": "nis",
+    "stop": "pfcov",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "A normalizing flow learns a map from the input distribution to a <em>quasi-optimal</em> IS density directly \u2014 stacked invertible networks with cheap Jacobian determinants, so the proposal is trained rather than fitted from a parametric family. The concrete answer to &ldquo;can a flow replace the CE mixture&rdquo;. <b>Verified citation.</b>",
+   "r": "Dasgupta &amp; Johnson, &ldquo;REIN: reliability estimation via importance sampling with normalizing flows&rdquo;, <b>RESS</b> 242, 2024 (doi 10.1016/j.ress.2023.109729). Related: NOFIS, which learns a sequence of proposals over nested subset events."
+  },
+  "TabPFN-AL": {
+   "g": "modern",
+   "cf": "high",
+   "c": {
+    "ls": "composed",
+    "tgt": "margin",
+    "surr": "tabicl",
+    "read": "hard",
+    "uq": "native",
+    "acq": "amb",
+    "batch": "single",
+    "pop": "mc",
+    "stop": "lft",
+    "fid": "sf",
+    "dim": "full"
+   },
+   "d": "Tabular foundation models as the surrogate \u2014 in-context learning replaces per-problem fitting, which is what makes the 12-62 point regime workable. This is the family A5-A12 belong to.",
+   "r": "Tabular foundation model \u2014 Hollmann et al., <b>Nature</b>, 2025 (TabPFN v2). TabICL is a sibling architecture."
+  }
+ }
+}

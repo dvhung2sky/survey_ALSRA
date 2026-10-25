@@ -1,0 +1,7 @@
+draw  count-vs-RB(%)  n  mean|err| vs RB(%)  sd   (beta+RB U-function arm: 2.50)
+   0        +3.02  5            6.66  1.00
+   1        +1.13  5            5.94  1.68
+   2        -1.45  5            1.22  0.95
+   3        -6.94  5            1.35  1.37
+pooled over 20 runs / 4 draws: mean |err| 3.79%  -> gap vs beta arm 1.29 points
+per-draw means [6.66, 5.94, 1.22, 1.35]; mean 3.79, 95% t-interval over draws -0.84-8.42

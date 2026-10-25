@@ -34,6 +34,12 @@ python3 bench/al_run.py 578 egra 0 --pop bench/578_precast_postcast_joints/pop_m
 | A TabICL-v2 checkpoint | The TabICL surrogate and the paths built on it. Set `TABICL_CKPT=/path/to/tabicl-regressor-v2-20260212.ckpt`, or place the file in the repository root. |
 | The calibrated OpenSees models | Every option that evaluates a point outside the population: subset simulation, the importance-sampling family, line sampling, Latin hypercube sampling, the surrogate-agnostic (MFIS) estimator and the low-fidelity level. The calibrated `model.py` files are **not distributed**; they are available from the corresponding author. Set `CALIB_DIR=/path/to/calib` (one folder per benchmark, e.g. `calib/578_precast_postcast_joints/model.py`). Without them, the interface disables these options and says why. |
 
+## Data of the review
+
+- `data/corpus/`: the coded corpus (`corpus_coding.csv`, one row per reviewed active-learning paper with its placement on the eleven axes), the placement of the 61 named methods on the design space (`designspace_data.json`), corpus statistics, the blind second coding of 20 papers with its agreement statistics (`recode_*`), the coding instructions given to the language-model coders (`coding_prompt_GUIDE.md`) and the publication-trend scan (`trend_*`).
+- `data/section6_2_decomposition/`: the per-seed results behind Table 10, the error-versus-target-probability series and the demand-redraw runs of Section 6.2 (see its README).
+- `bench/`: the five benchmark populations, model cards, method harness and per-seed results of Section 6 and Section 6.1.
+
 ## Repository layout
 
 ```

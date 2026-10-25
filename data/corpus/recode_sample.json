@@ -1,0 +1,142 @@
+[
+ {
+  "id": "364",
+  "title": "Efficient importance sampling for stochastic simulators using adaptive mixture density networks",
+  "journal": "StrucSafety",
+  "year": "2026",
+  "pdf": "StrucSafety/StructSafety_vol121/Efficient-importance-sampling-for-stochastic-simulators-usin_2026_Structural.pdf"
+ },
+ {
+  "id": "236",
+  "title": "Bayesian updating of model parameters using adaptive Gaussian process regression and particle filter",
+  "journal": "StrucSafety",
+  "year": "2023",
+  "pdf": "StrucSafety/StructSafety_vol102/Bayesian-updating-of-model-parameters-using-adaptive-Gaussia_2023_Structural.pdf"
+ },
+ {
+  "id": "88",
+  "title": "Bayesian probability density evolution method for reliability analysis with stepwise uncertainty reduction",
+  "journal": "RESS",
+  "year": "2027",
+  "pdf": "RESS/RESS_vol277_P2/Bayesian-probability-density-evolution-method-for-re_2027_Reliability-Engine.pdf"
+ },
+ {
+  "id": "180",
+  "title": "Improved active learning probabilistic approach for the computation of failure probability",
+  "journal": "StrucSafety",
+  "year": "2021",
+  "pdf": "StrucSafety/StructSafety_vol88/Improved-active-learning-probabilistic-approach-for-the-com_2021_Structural-.pdf"
+ },
+ {
+  "id": "295",
+  "title": "Comparison of probabilistic structural reliability methods for ultimate limit state assessment of wind turbines",
+  "journal": "StrucSafety",
+  "year": "2024",
+  "pdf": "StrucSafety/StructSafety_vol111/Comparison-of-probabilistic-structural-reliability-methods-fo_2024_Structura.pdf"
+ },
+ {
+  "id": "340",
+  "title": "Multi-point active learning probability density evolution method",
+  "journal": "StrucSafety",
+  "year": "2025",
+  "pdf": "StrucSafety/StructSafety_vol117/Multi-point-active-learning-probability-density-evolutio_2025_Structural-Saf.pdf"
+ },
+ {
+  "id": "209",
+  "title": "A novel adaptive importance sampling algorithm for Bayesian model updating",
+  "journal": "StrucSafety",
+  "year": "2022",
+  "pdf": "StrucSafety/StructSafety_vol97/A-novel-adaptive-importance-sampling-algorithm-for-Bayesi_2022_Structural-Sa.pdf"
+ },
+ {
+  "id": "205",
+  "title": "Active learning for structural reliability: Survey, general framework and benchmark",
+  "journal": "StrucSafety",
+  "year": "2022",
+  "pdf": "StrucSafety/StructSafety_vol96/Active-learning-for-structural-reliability--Survey--general_2022_Structural-.pdf"
+ },
+ {
+  "id": "17",
+  "title": "Adaptive multi-fidelity structural optimization under fluid-structure interaction",
+  "journal": "CMAME",
+  "year": "2027",
+  "pdf": "CMAME/vol463/part/PB_p1/Adaptive-multi-fidelity-structural-optimiza_2027_Computer-Methods-in-Applied.pdf"
+ },
+ {
+  "id": "248",
+  "title": "Adaptive Kriging-based Bayesian updating of model and reliability",
+  "journal": "StrucSafety",
+  "year": "2023",
+  "pdf": "StrucSafety/StructSafety_vol104/Adaptive-Kriging-based-Bayesian-updating-of-model-and-re_2023_Structural-Saf.pdf"
+ },
+ {
+  "id": "100",
+  "title": "A novel adaptive multi-class probability support vector machine model for evidence theory-based system reliability analysis",
+  "journal": "RESS",
+  "year": "2027",
+  "pdf": "RESS/RESS_vol277_P3/A-novel-adaptive-multi-class-probability-support-vecto_2027_Reliability-Engi.pdf"
+ },
+ {
+  "id": "5",
+  "title": "GeoPINONet: Sparse-supervised physics-informed operator learning for full-field prediction in variable 3D elastic domains",
+  "journal": "CMAME",
+  "year": "2026",
+  "pdf": "CMAME/vol462_p1/GeoPINONet--Sparse-supervised-physics-informed-op_2026_Computer-Methods-in-A.pdf"
+ },
+ {
+  "id": "362",
+  "title": "Adaptive surrogate model-assisted radial-based line sampling for rare event evaluation",
+  "journal": "StrucSafety",
+  "year": "2026",
+  "pdf": "StrucSafety/StructSafety_vol121/Adaptive-surrogate-model-assisted-radial-based-line-samplin_2026_Structural-.pdf"
+ },
+ {
+  "id": "280",
+  "title": "Adaptive sampling based estimation of small probability of failure using interpretable Self-Organising Map",
+  "journal": "StrucSafety",
+  "year": "2024",
+  "pdf": "StrucSafety/StructSafety_vol109/Adaptive-sampling-based-estimation-of-small-probability-of-fa_2024_Structura.pdf"
+ },
+ {
+  "id": "361",
+  "title": "Adaptive Kriging with hollow hypersphere strategy for system and component reliability",
+  "journal": "StrucSafety",
+  "year": "2026",
+  "pdf": "StrucSafety/StructSafety_vol121/Adaptive-Kriging-with-hollow-hypersphere-strategy-for-syste_2026_Structural-.pdf"
+ },
+ {
+  "id": "235",
+  "title": "Adaptive subset simulation for time-dependent small failure probability incorporating first failure time and single-loop surrogate model",
+  "journal": "StrucSafety",
+  "year": "2023",
+  "pdf": "StrucSafety/StructSafety_vol102/Adaptive-subset-simulation-for-time-dependent-small-failure-pro_2023_Structu.pdf"
+ },
+ {
+  "id": "42",
+  "title": "An Extended Kriging Model-Based Method for Efficient Reliability Analysis Under Parametric Variation of Probability Distribution",
+  "journal": "IEEE_TR",
+  "year": "2026",
+  "pdf": "IEEE_TR/Vol75_2026/11358781_An-Extended-Kriging-Model-Based-Method-for-Efficient-Reliability-Analysis-Under-Parametric-Variation.pdf"
+ },
+ {
+  "id": "53",
+  "title": "Strategic Failure Analysis in Resource-Constrained Reliability Testing: Model Updates and Test Condition Selection",
+  "journal": "IEEE_TR",
+  "year": "2026",
+  "pdf": "IEEE_TR/Vol75_2026/11480809_Strategic-Failure-Analysis-in-Resource-Constrained-Reliability-Testing-Model-Updates-and-Test-Condit.pdf"
+ },
+ {
+  "id": "147",
+  "title": "Evidence-weighted confidence intervals for adaptive Kriging reliability updating",
+  "journal": "RESS",
+  "year": "2027",
+  "pdf": "RESS/RESS_vol277_P6/Evidence-weighted-confidence-intervals-for-adapt_2027_Reliability-Engineerin.pdf"
+ },
+ {
+  "id": "377",
+  "title": "Structural dominant failure modes analysis method based on limit state sample searching with supervised Laplacian eigenmaps",
+  "journal": "StrucSafety",
+  "year": "2026",
+  "pdf": "StrucSafety/StructSafety_vol123/Structural-dominant-failure-modes-analysis-method-based-on-lim_2026_Structur.pdf"
+ }
+]

@@ -1,0 +1,21 @@
+arm,target|rule|readout,n_seeds,mean_Pf,mean_abs_err_pct,sd_abs_err_pct,worst_abs_err_pct,seed0_err_pct,seed1_err_pct,seed2_err_pct,seed3_err_pct,seed4_err_pct
+EFF+CQR,beta(x_s) | EFF + CQR offset | Rao-Blackwell,5,0.002888,1.11,1.25,3.57,-0.48,-0.82,-0.14,-3.57,+0.55
+EFF,beta(x_s) | expected feasibility | Rao-Blackwell,5,0.002934,1.29,0.79,2.26,+2.26,+0.21,+0.55,+1.92,-1.51
+A12-rand,beta(x_s) | random design | Rao-Blackwell,5,0.002888,1.80,1.12,2.88,-0.14,+2.26,-0.82,-2.88,-2.88
+A8-RB,beta(x_s) | U-function | Rao-Blackwell,5,0.002902,2.50,1.91,5.28,+4.32,-1.17,-5.28,+0.89,-0.82
+A12,beta(x_s) | probability-band width | Rao-Blackwell,5,0.002992,2.68,1.69,5.35,+5.35,+0.55,+3.29,+2.95,+1.24
+A11*,margin | A9 design | compressed T(g),5,0.003036,4.19,1.78,6.38,+6.38,+4.67,+5.35,+1.24,+3.29
+A8,margin | U-function | indicator,5,0.003108,6.66,1.00,7.76,+7.41,+6.04,+7.07,+5.01,+7.76
+A9,margin | CQR-UCB | indicator,5,0.003134,7.55,2.20,10.84,+8.79,+7.76,+10.84,+4.67,+5.70
+A7,margin | native-UCB | indicator,5,0.003154,8.24,2.01,11.53,+11.53,+7.41,+6.04,+6.73,+9.47
+A10,margin | CQR-U | indicator,5,0.003292,12.97,3.61,18.74,+11.53,+18.74,+8.10,+14.96,+11.53
+A5,margin | conformal-UCB | indicator,5,0.003460,18.74,11.53,37.61,+23.54,+2.95,+13.25,+37.61,+16.33
+A1,margin | GP + U-function | indicator,5,0.005082,74.40,13.57,92.18,+89.77,+64.38,+62.66,+92.18,+63.01
+A6,margin | tuned XGB | indicator,5,0.000290,90.05,5.59,98.63,-82.16,-87.99,-98.63,-87.99,-93.48
+A4,margin | XGB + conformal | indicator,5,0.006078,108.58,70.02,242.48,+41.73,+242.48,+103.50,+86.68,+68.50
+A3,margin | GP + jackknife conformal | indicator,5,0.006766,132.19,15.64,159.78,+130.27,+115.85,+118.94,+136.10,+159.78
+A2,margin | GP-UCB | indicator,5,0.007034,141.39,34.16,199.25,+142.62,+104.19,+151.20,+199.25,+109.68
+MC_matched_budget,"brute force, 300 FE",40,,81.60,,,,,,,
+MC_10x_budget,"brute force, 3000 FE",40,,25.50,,,,,,,
+MC_complete_population,"brute force, 199857 FE",1,0.003002,3.02,,,,,,,
+MC_matched_accuracy,"brute force, 1800792 FE",0,,1.10,,,,,,,
