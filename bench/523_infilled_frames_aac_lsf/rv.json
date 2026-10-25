@@ -1,0 +1,44 @@
+{
+ "fc": [
+  "LN",
+  30.15,
+  0.12,
+  "paper mean; CoV JCSS-type concrete (fcc scaled with fc)"
+ ],
+ "fy": [
+  "LN",
+  430.0,
+  0.06,
+  "paper mean; CoV JCSS-type rebar"
+ ],
+ "fu": [
+  "LN",
+  545.0,
+  0.05,
+  "paper mean; CoV assumed"
+ ],
+ "N_ax": [
+  "N",
+  188437.5,
+  0.1,
+  "0.1 fc Ag gravity; CoV assumed"
+ ],
+ "Em": [
+  "LN",
+  2195.0,
+  0.2,
+  "AAC masonry modulus (derived Table 3); CoV assumed"
+ ],
+ "Vs": [
+  "LN",
+  95000.0,
+  0.25,
+  "CAL strut peak horizontal force (N) = AAC infill strength; CoV assumed"
+ ],
+ "r": [
+  "N",
+  0.2,
+  0.3,
+  "CAL residual strut ratio; assumed"
+ ]
+}

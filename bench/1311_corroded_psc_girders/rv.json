@@ -1,0 +1,62 @@
+{
+ "fcm": [
+  "LN",
+  44.07,
+  0.12,
+  "paper fcm; CoV JCSS-type concrete"
+ ],
+ "Pe": [
+  "N",
+  400000.0,
+  0.05,
+  "effective prestress force; CoV assumed (loss uncertainty)"
+ ],
+ "fpu": [
+  "LN",
+  1883,
+  0.025,
+  "strand fpu paper; CoV ~0.025 literature (prestressing strand), fpy scaled with it"
+ ],
+ "Ep": [
+  "LN",
+  195000.0,
+  0.02,
+  "assumed"
+ ],
+ "b": [
+  "N",
+  280,
+  0.02,
+  "assumed geometric tolerance"
+ ],
+ "h": [
+  "N",
+  380,
+  0.015,
+  "assumed geometric tolerance"
+ ],
+ "c_strand": [
+  "N",
+  1.0,
+  0.05,
+  "multiplier on strand eccentricity profile (sd ~3-4 mm); assumed"
+ ],
+ "pit_scale": [
+  "LN",
+  1.0,
+  0.3,
+  "scale of the MEASURED wire-area loss (Table 2); CoV assumed -- corrosion RV"
+ ],
+ "LAM": [
+  "N",
+  0.82,
+  0.1,
+  "true/idealised pit-loss factor (Table 9 calibrated); CoV assumed"
+ ],
+ "EPU": [
+  "N",
+  0.075,
+  0.1,
+  "strand rupture strain (Table 8); CoV assumed"
+ ]
+}

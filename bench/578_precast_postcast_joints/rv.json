@@ -1,0 +1,44 @@
+{
+ "fc_cast": [
+  "LN",
+  31.22,
+  0.12,
+  "Table 7 mean; CoV JCSS-type concrete"
+ ],
+ "fc_pre": [
+  "LN",
+  36.56,
+  0.1,
+  "Table 7 mean; CoV assumed (precast plant)"
+ ],
+ "fy18": [
+  "LN",
+  415.7,
+  0.06,
+  "READ D18; CoV JCSS-type rebar"
+ ],
+ "fy10": [
+  "LN",
+  407.8,
+  0.06,
+  "READ D10 waist bars; CoV JCSS-type rebar"
+ ],
+ "n_ratio": [
+  "N",
+  0.234,
+  0.1,
+  "READ axial ratio; gravity load CoV assumed"
+ ],
+ "kappa": [
+  "LN",
+  0.58,
+  0.15,
+  "CAL panel strength = model-error RV; CoV assumed"
+ ],
+ "lam_s": [
+  "LN",
+  4.0,
+  0.2,
+  "CAL slip multiplier = model-error RV; CoV assumed"
+ ]
+}

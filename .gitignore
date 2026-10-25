@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.DS_Store
+alpath/runs/
+alpath/logs/
+alpath/.taste-skill/
+bench/*/results/
+calib/
+*.ckpt

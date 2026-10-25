@@ -1,0 +1,62 @@
+{
+ "fy_cf": [
+  "LN",
+  356.2,
+  0.07,
+  "Table 1 mean; CoV JCSS-type structural steel fy ~0.07"
+ ],
+ "fy_cw": [
+  "LN",
+  425.6,
+  0.07,
+  "Table 1 mean; CoV JCSS-type structural steel fy ~0.07"
+ ],
+ "fy_bf": [
+  "LN",
+  425.6,
+  0.07,
+  "Table 1 mean; CoV JCSS-type structural steel fy ~0.07"
+ ],
+ "fy_bw": [
+  "LN",
+  376.6,
+  0.07,
+  "Table 1 mean; CoV JCSS-type structural steel fy ~0.07"
+ ],
+ "fy_ly": [
+  "LN",
+  212.6,
+  0.08,
+  "LY225 mean Table 1; CoV assumed"
+ ],
+ "E_ly": [
+  "LN",
+  194000.0,
+  0.03,
+  "assumed"
+ ],
+ "b_ly": [
+  "N",
+  0.004,
+  0.3,
+  "assumed (CAL-ish hardening ratio)"
+ ],
+ "W_ring": [
+  "N",
+  105.0,
+  0.03,
+  "assumed (CAL geometry, not printed)"
+ ],
+ "t_ring": [
+  "N",
+  16.0,
+  0.02,
+  "assumed plate tolerance"
+ ],
+ "N_col": [
+  "N",
+  360000.0,
+  0.1,
+  "assumed gravity load, normal"
+ ]
+}

@@ -1,0 +1,50 @@
+{
+ "fy": [
+  "LN",
+  333.0,
+  0.07,
+  "Table 1 flange coupon; CoV JCSS-type steel"
+ ],
+ "fu": [
+  "LN",
+  483.0,
+  0.05,
+  "Table 1; CoV assumed"
+ ],
+ "E": [
+  "LN",
+  200000.0,
+  0.03,
+  "assumed"
+ ],
+ "bf": [
+  "N",
+  125.0,
+  0.02,
+  "assumed rolled/welded tolerance"
+ ],
+ "tf": [
+  "N",
+  7.3,
+  0.03,
+  "READ tf; thickness tolerance assumed"
+ ],
+ "h": [
+  "N",
+  266.0,
+  0.015,
+  "assumed"
+ ],
+ "tw": [
+  "N",
+  1.7,
+  0.04,
+  "READ web t; tolerance assumed"
+ ],
+ "d_f": [
+  "LN",
+  25.68,
+  0.2,
+  "CAL fracture stretch of hinge flange (mm); fracture scatter assumed -- dominant RV for catenary/fracture"
+ ]
+}

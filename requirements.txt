@@ -1,0 +1,9 @@
+# tested with Python 3.14 on macOS (Apple silicon)
+numpy>=2.0          # tested 2.4.3
+scipy>=1.13         # tested 1.17.1
+scikit-learn>=1.5   # tested 1.6.1
+psutil>=5.9         # memory guard (guard/run_guarded.py); tested 7.2.2
+xgboost>=2.0        # only for the XGBoost surrogate; tested 3.2.0
+torch>=2.2          # only for TabICL and the neural-IS flow; tested 2.11.0
+tabicl>=2.1         # only for the TabICL surrogate; tested 2.1.1
+openseespy>=3.5     # only for live FE calls (needs the calibrated models, see README); tested 3.8.0.0
